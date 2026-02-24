@@ -1,0 +1,111 @@
+
+<!--offcanvas-->
+<nav class="navbar bg-white" th:fragment="topNavbarFragment">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="d-flex align-items-center">
+      <img src="images/g7.png" id="imgLogUserPhoto" style="width: 40px; height: 40px; border-radius: 100px;" alt="">
+      <span class="text-dark me-2 fw-bold" th:text="${loggedusername}">
+        <i class="fa-solid fa-user fa-sm"></i>
+      </span>
+      <a class="btn text-dark p-0" href="/logout" title="Logout">
+        <i class="fa-solid fa-arrow-right-from-bracket fa-sm"></i>
+      </a>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start text-bg-dark" style="width: 300px;" tabindex="-1" id="offcanvasNavbar"
+    aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">SEWLEE CACTUS PLANTS</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <hr>
+
+    <div class="offcanvas-body">
+
+      <form class="d-flex mt-1" role="search">
+        <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-2">
+
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="/dashboard"></i> Home</a>
+        </li>
+        
+        <!-- Administration -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+           Administration
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="/employee_details">Employee</a></li>
+            <li><a class="dropdown-item" href="/user_details"> User</a></li>
+            <li><a class="dropdown-item" href="/privilege_details">Privilege</a></li>
+          </ul>
+        </li>
+
+        <!-- Product -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+           Product
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="/item_details">Item</a></li>
+             <li><a class="dropdown-item" href="/inventory_details">Inventory</a></li>
+            <li><a class="dropdown-item" href="/damaged_items">Damaged Items</a></li>
+          </ul>
+        </li>
+
+        <!-- Purchase -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+           Purchase
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            
+            <li><a class="dropdown-item" href="/supplier_details">Supplier</a></li>
+            <li><a class="dropdown-item" href="/payment_details">Supplier Payment</a></li>
+            <li><a class="dropdown-item" href="/pricerequest">Price Request</a></li>
+            <li><a class="dropdown-item" href="/pricelist">Price List</a></li>
+            <li><a class="dropdown-item" href="/purchaseorder_details">Purchase Order</a></li>
+            <li><a class="dropdown-item" href="/grn_details">Goods Received Note</a></li>
+            
+          </ul>
+        </li>
+
+        <!-- Customer -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+           Customer & Sales
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="/customer_details">Customer</a></li>
+            <li><a class="dropdown-item" href="/customer_invoice">Customer Invoice</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa-solid fa-lock"></i> Reports
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+           <li><a class="dropdown-item" href="/reportpayment">Payment</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>

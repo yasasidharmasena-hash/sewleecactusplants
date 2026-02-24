@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="header :: headerFragment"></head>
+
+<head>
+    <script src="chart/chart.min.js"></script>
+</head>
+
+<body style="background-color: #fff9ec;">
+
+    <!--Nav Bar Start-->
+    <nav th:replace="topnavbar :: topNavbarFragment"></nav>
+    <!--Nav Bar End-->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center fw-bold title mt-3 p-3">
+                <h1> Payment Report</h1>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="dteStartDate" class="fw-bold">From Date :</label>
+                        <input type="date" class="form-control" id="dteStartDate">
+                    </div>
+                    <div class="col-3">
+                        <label for="dteEndDate" class="fw-bold">To Date :</label>
+                        <input type="date" class="form-control" id="dteEndDate">
+                    </div>
+                    <div class="col-3">
+                        <label for="selectType" class="fw-bold">Type</label>
+                        <select id="selectType" class="form-select">
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </div>
+                    <div class="col-3 mt-4">
+
+                        <button class="btn btn-success me-2" type="button" onclick="generateReport()">Generate</button>
+                        <button class="btn btn-primary" type="button" onclick="printChart()">Print</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <table class="table" id="tablePaymentReport">
+                <thead class="table-dark" style="text-align: center;">
+                    <tr>
+                        <th>No</th>
+                        <th>Month / Week</th>
+                        <th>Payment Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="tablePaymentReportBody"></tbody>
+            </table>
+        </div>
+        <div class="col-5">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="col-1"></div>
+    </div>
+   
+
+    <!--link commonFunction js-->
+    <script src="/script/commonFunction.js"></script>
+
+    <!--link tableFunction js-->
+    <script src="/script/tableFunction.js"></script>
+
+    <!--link validationFunction js-->
+    <script src="/script/validationFunction.js"></script>
+
+    <!--link reportone js-->
+    <script src="/uicontroller/reportpayment.js"></script>
+
+
+</body>
+
+</html>

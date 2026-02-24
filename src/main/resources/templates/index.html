@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="icon" href="/images/image5.png">
+
+  <!--link bootstrap 5 css file-->
+  <link rel="stylesheet" href="/bootstrap-5.2.3/css/bootstrap.min.css">
+
+  <!--link commonstyle Css file-->
+  <link rel="stylesheet" href="/css/commonstyle.css">
+
+  <!--link fontawesome Css-->
+  <link rel="stylesheet" href="/fontawesome-free-6.7.2/css/all.min.css">
+
+  <!--link bootstrap 5 js file-->
+  <script src="/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+  <!--offcanvas-->
+  <nav class="navbar navbar-dark bg-dark" th:fragment="topNavbarFragment">
+    <div class="container-fluid position-relative">
+
+      <button class="navbar-toggler position-absolute start-0 ms-2" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a class="navbar-brand mx-auto fw-bold text-uppercase" href="#">SEWLEE CACTUS PLANTS</a>
+
+    </div>
+
+    <div class="offcanvas offcanvas-start text-bg-dark" style="width: 300px;" tabindex="-1" id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <!--<h5 class="offcanvas-title" id="offcanvasNavbarLabel">SEWLEE CACTUS PLANTS</h5>-->
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <form class="d-flex mt-1" role="search">
+          <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-2">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#"><i class="fa-solid fa-house"></i>
+              Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"> About Us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/login"> Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <
+
+  <div class="container-fluid">
+    <h1>Home Page</h1>
+  </div>
+  <!--Home page body end-->
+
+</body>
+
+</html>

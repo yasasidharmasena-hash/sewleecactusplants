@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="header :: headerFragment"></head>
+
+<head>
+    <script src="chart/chart.min.js"></script>
+</head>
+
+<body style="background-color: #fff9ec;">
+
+    <!--Nav Bar Start-->
+    <nav th:replace="topnavbar :: topNavbarFragment"></nav>
+    <!--Nav Bar End-->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center fw-bold title mt-3 p-3">
+                <h1> <i class="fa-solid fa-user-tie"></i>Report One</h1>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <button class="btn btn-primary" type="button" onclick="printChart()">Print</button>
+            </div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!--link commonFunction js-->
+    <script src="/script/commonFunction.js"></script>
+
+    <!--link tableFunction js-->
+    <script src="/script/tableFunction.js"></script>
+
+    <!--link validationFunction js-->
+    <script src="/script/validationFunction.js"></script>
+
+    <!--link reportone js-->
+    <script src="/uicontroller/reportone.js"></script>
+
+
+</body>
+
+</html>

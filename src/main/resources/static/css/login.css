@@ -1,0 +1,28 @@
+body {
+    background: #b7d7a8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px; 
+}
+
+.container-fluid {
+    background: #fff9ec;
+    padding: 32px;
+    border-radius: 12px;
+    width: 350px;
+    text-align: center;
+}
+
+.container-fluid h2 {
+    margin-bottom: 16px;
+    color: #4a6041;
+}
+
+.container-fluid button {
+    width: 100%; 
+}
+
+.container-fluid button:hover {
+    background-color: #4a6041;
+}

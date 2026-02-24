@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="icon" href="/images/image5.png">
+
+    <!--link bootstrap 5 css file-->
+    <link rel="stylesheet" href="/bootstrap-5.2.3/css/bootstrap.min.css">
+
+    <!--link login Css file-->
+    <link rel="stylesheet" href="/css/login.css">
+
+    <!--link fontawesome Css-->
+    <link rel="stylesheet" href="/fontawesome-free-6.7.2/css/all.min.css">
+
+    <!--link bootstrap 5 js file-->
+    <script src="/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="justify-content-center">
+                <form action="/login" method="post">
+                    <img src="/images/image5.png" alt="cactus icon" style="width: 100px; height: 100px">
+                    <h2>Login Form</h2>
+
+                    <div class="row mt-1 p-1 text-danger" th:if="${param.error}">
+                        <div class="col text-center">
+                            Invalid username or password..!
+                        </div>
+                        
+                    </div>
+
+                    <div class="row mt-1 p-1">
+                        <div class="input-group">
+                            <span class="input-group-text">@</span>
+                            <input type="text" required name="username" placeholder="Enter User Name" id="textUserName"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-1 p-1">
+                        <div class="input-group">
+                            <span class="input-group-text">#</span>
+                            <input type="password" required name="password" placeholder="Enter Password"
+                                id="textPassword" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-1 p-1">
+                        <div class="col">
+                            <button type="submit" class="btn btn-success fw-bold">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

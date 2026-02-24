@@ -1,0 +1,33 @@
+.title{
+    background-color: #b7d7a8;
+    color: #4a6041;
+    border-radius: 10px;
+    border-left: 10px;
+    border-right: 10px;
+    border-top: 10px;
+    border-bottom: 10px;
+    
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    border-left: 10px;
+    border-right: 10px;
+    border-top: 10px;
+    border-bottom: 10px;
+
+} 
+
+.modal-content {
+    background-color: #fff9ec;
+}
+
+.dashboard-background {
+  background-image: url("/images/g1.png"); /* Replace with your actual image file */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}

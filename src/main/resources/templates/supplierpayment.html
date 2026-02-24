@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="header :: headerFragment"></head>
+
+<body style="background-color: #fff9ec;">
+
+    <!--Nav Bar Start-->
+    <nav th:replace="topnavbar :: topNavbarFragment"></nav>
+    <!--Nav Bar End-->
+
+    <div class="container-fluid">
+        <!--Start title area-->
+        <div class="row">
+            <div class="col-12 text-center fw-bold title mt-3 p-3">
+                <h1> Supplier Payment Management</h1>
+            </div>
+        </div>
+
+        <!--Tabs-->
+        <div class="row mt-3">
+            <div class="col-12 text-start">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalPaymentForm">
+                    <i class="fa-solid fa-plus"></i>
+                    Add New Payment
+                </button>
+            </div>
+        </div>
+
+        <!--Start table area-->
+        <div class="row mt-2">
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover table-striped" id="tablePayment">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Invoice</th>
+                                    <th>Sup_Name</th>
+                                    <th>Sup_Bill No.</th>
+                                    <th>Total</th>
+                                    <th>Paid</th>
+                                    <th>Balance</th>
+                                    <th>Payment Method</th>
+                                    <th>Modify</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablePaymentBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End table area-->
+    </div>
+
+    <!--Start form Modal-->
+
+    <div class="modal" tabindex="-1" id="modalPaymentForm" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="/images/image5.png" alt="cactus" style="width: 20px; height: 20px">
+                    <h4 class="modal-title"> Edit Payment</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body form-area">
+
+                            <!--action / method-->
+                            <form id="formPayment" onsubmit="return false">
+                                <!--Start required mark-->
+                                <div class="row mt-2">
+                                    <div class="col-12 fw-bold text-end">
+                                        <p><span class="text-danger">(*) Fields are Mandatory</span></p>
+                                    </div>
+                                </div>
+                                <!--End required mark-->
+
+                                <!--Supplier name / Supplier Bill-->
+                                <div class="row mt-2">
+
+                                    <!--Start supplier name-->
+                                    <div class="col-6">
+                                        <lable for="selectSupplier" class="col-2 form-lable fw-bold">Supplier
+                                            Name :
+                                            <span class="text-danger">*</span>
+                                        </lable>
+
+                                        <select id="selectSupplier" required class="form-select"
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please select out this field"
+                                            onchange="selectDyanamicElementValidator(this,'payment','Sup_Name')">
+                                            <option value="" selected disabled>Select Supplier name</option>
+                                        </select>
+                                    </div>
+                                    <!--End Supplier name-->
+
+                                    <!--Start Sup Bill-->
+                                    <div class="col-6">
+                                        <lable for="selectSupplierBill" class="form-lable fw-bold">
+                                            Supplier Bill No. :<span class="text-danger">*</span>
+                                        </lable>
+
+                                        <select id="selectSupplierBill" required class="form-select"
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please select out this field"
+                                            onchange="selectDyanamicElementValidator(this, 'payment', 'grn_details_id')">
+                                            <option value="" selected disabled>Select Supplier No.
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!--End Sup Bill-->
+                                </div>
+
+                                <!--Total Amount / Paid Amount/ Balance Amount / Payment Method-->
+                                <div class="row mt-2">
+
+                                    <!--Start Total Amount-->
+                                    <div class="col-3">
+                                        <lable for="textTotalAmount" class="form-lable fw-bold">Total Amount :
+                                            <span class="text-danger">*</span>
+                                        </lable>
+                                        <input type="text"
+                                            onkeyup="textValidator(this, '^(([1-9][0-9]{0,10})|([1-9][0-9]{0,10}[.][0-10]{2}))$','payment','total_amount')"
+                                            class="form-control" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please fill out this field" id="textTotalAmount"
+                                            placeholder="Enter Total Amount" required>
+                                    </div>
+                                    <!--End Total Amount-->
+
+                                    <!--Start Paid Amount-->
+                                    <div class="col-3">
+                                        <lable for="texPaidAmount" class="form-lable fw-bold">Paid Amount :
+                                            <span class="text-danger">*</span>
+                                        </lable>
+                                        <input type="text"
+                                            onkeyup="textValidator(this, '^(([1-9][0-9]{0,10})|([1-9][0-9]{0,10}[.][0-10]{2}))$','payment','paid_amount')"
+                                            class="form-control" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please fill out this field" id="texPaidAmount"
+                                            placeholder="Enter Paid Amount" required>
+                                    </div>
+                                    <!--End Paid Amount-->
+
+                                    <!--Start Balance Amount-->
+                                    <div class="col-3">
+                                        <lable for="textBalanceAmount" class="form-lable fw-bold">Balance Amount :
+                                            <span class="text-danger">*</span>
+                                        </lable>
+                                        <input type="text"
+                                            onkeyup="textValidator(this, '^(([1-9][0-9]{0,10})|([1-9][0-9]{0,10}[.][0-10]{2}))$','payment','balance_amount')"
+                                            class="form-control" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please fill out this field" id="textBalanceAmount"
+                                            placeholder="Enter Balance Amount" required>
+                                    </div>
+                                    <!--End Balance Amount-->
+
+                                    <!--Start Payment Method-->
+                                    <div class="col-3">
+                                        <lable for="selectPaymentMethod" class="form-lable fw-bold">Payment Method : <span
+                                                class="text-danger">*</span></lable>
+                                        <select id="selectPaymentMethod" required class="form-select"
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please select out this field"
+                                            onchange="selectStaticElementValidator(this, 'payment','payment_method')">
+                                            <option value="" selected disabled>Select Payment Method</option>
+                                            <option value="Cheque">Cheque</option>
+                                            <option value="Online">Online</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                                    <!--End Payment Method-->
+                                </div>
+
+                                <!--Start Cheque No / Cheque date/ Transfer id / Transfer DateTime-->
+                                <div class="row mt-2">
+                                    <!--Cheque No-->
+                                    <div class="col-3">
+                                        <lable for="textChequeNo" class="form-lable fw-bold">Checque No. : <span class="text-danger"></span></lable>
+                                        <input type="text" onkeyup="textValidator(this, '^[A-Za-z0-9]{12}$','payment','cheque_no')" class="form-control"
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Please fill out this field"
+                                            id="textChequeNo" placeholder="Enter Checque No.">
+                                    </div>
+                                
+                                    <!--Cheque date-->
+                                    <!--onkeydown = return false ---cannot type-->
+                                    <div class="col-3">
+                                        <lable for="dteCheque" class="form-lable fw-bold"> Cheque Date :
+                                            <span class="text-danger"></span>
+                                        </lable>
+                                        <input onkeydown="return false" onchange="dateElementValidator(this, 'payment','cheque_date')"
+                                            type="date" class="form-control" id="dteCheque" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please select out this field">
+                                    </div>
+                                
+                                    <!--Transfer id-->
+                                    <div class="col-3">
+                                        <lable for="textTransferid" class="form-lable fw-bold">Transfer Id : <span class="text-danger"></span></lable>
+                                        <input type="text"
+                                            onkeyup="textValidator(this, '^[A-Za-z0-9]{12}$','payment','transfer_id')"
+                                            class="form-control" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please fill out this field" id="textTransferid" placeholder="Enter Transfer Id">
+                                    </div>
+                                
+                                    <!--Transfer DateTime-->
+                                    <!--onkeydown = return false ---cannot type-->
+                                    <div class="col-3">
+                                        <lable for="dteTransfer" class="form-lable fw-bold"> Transfer Date & Time :
+                                            <span class="text-danger"></span>
+                                        </lable>
+                                        <input onkeydown="return false" onchange="dateElementValidator(this, 'payment','transfer_datetime')"
+                                            type="datetime-local" class="form-control" id="dteTransfer" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Please select out this field">
+                                    </div>
+                                
+                                </div>
+                                <!--End Cheque No / Cheque date/ Transfer id / Transfer DateTime-->
+
+                                <!--Start Note-->
+                                <div class="row mt-2">
+                                    <!--Note-->
+                                    <div class="col-12">
+                                        <label for="textNote" class=" col-2 form-label fw-bold">Note : <span
+                                                class="text-danger"></span></label>
+
+                                        <textarea placeholder="Enter Note"
+                                            onkeyup="textValidator(this, '^([A-Za-z0-9\\/]{1,20}[.]?[\\s]?)+$', 'payment', 'note')"
+                                            id="textNote" class="form-control"></textarea>
+
+                                    </div>
+                                </div>
+                                <!--End Note-->
+
+                                <!--Start buttons-->
+                                <div class="row mt-2">
+                                    <div class="col-3 text-start">
+                                        <button type="button" class="btn btn-secondary" onclick="buttonPaymentReset()"><i
+                                                class="fa-solid fa-recycle fa-xs"></i> Reset</button>
+                                    </div>
+                                    <div class="col-9 text-end">
+
+                                        <button id="buttonSubmit" type="submit" class="btn btn-success"
+                                            onclick="buttonPaymentSubmit()"><i class="fa-solid fa-check fa-xs"></i>
+                                            Submit</button>
+                                    </div>
+                                </div>
+                                <!--End buttons-->
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--End form  modal -->
+
+
+    <!--print / view model-->
+    <div class="modal" tabindex="-1" id="modalPaymentView" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">View Supplier Payment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="tablePaymentView">
+                    <h2 class="text-center">SEWLEE CACTUS PLANTS</h2>
+                    <p class="text-center">46, Makumbura, Pannipitiya. +94 714122097</p>
+                    <p class="text-start" id="currentDateTime"></p>
+                    <h5 class="text-start">Supplier Payment Details</h5>
+                    <hr>
+                    <div class="card">
+                        <div class="card-body form-area">
+                            <table class="table table-hover table-striped">
+                                <thead class="table-dark"></thead>
+                                <tr>
+                                    <th>Payment No.</th>
+                                    <td id="tdPayBillNo"></td>
+                                </tr>
+                                <tr>
+                                    <th>Supplier Name</th>
+                                    <td id="tdSupName"></td>
+                                </tr>
+                                <tr>
+                                    <th>Sup. Bill No.</th>
+                                    <td id="tdSupBillNo"></td>
+                                </tr>
+                                <tr>
+                                    <th>Total Amount</th>
+                                    <td id="tdTotalAmount"></td>
+                                </tr>
+                                <tr>
+                                    <th>Paid Amount</th>
+                                    <td id="tdPaidAmount"></td>
+                                </tr>
+                                <tr>
+                                    <th>BalanceAmount</th>
+                                    <td id="tdBalanceAmount"></td>
+                                </tr>
+                                <tr>
+                                    <th>Payment Method</th>
+                                    <td id="tdPaymentMethod"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-info" onclick="buttonPaymentPrint()"><i class="fa-solid fa-print fa-xs"></i>
+                        Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--link commonFunction js-->
+    <script src="/script/commonFunction.js"></script>
+
+    <!--link tableFunction js-->
+    <script src="/script/tableFunction.js"></script>
+
+    <!--link validationFunction js-->
+    <script src="/script/validationFunction.js"></script>
+
+    <!--link item js-->
+    <script src="/uicontroller/supplierpayment.js"></script>
+
+</body>
+
+</html>
