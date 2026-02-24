@@ -71,6 +71,7 @@ public class CustomerController {
         }
     }
 
+
     // request POST mapping to insert[URL-->/customer_details/insert]
     @PostMapping(value = "/insert") // for submit button
     // @RequestBody ---> access the object that sent from the fontend
